@@ -12,6 +12,6 @@ func RegisterStartHandler(b *telebot.Bot) {
 			return selectLanguage(c)
 		}
 
-		return c.Send("Successfully authorized")
+		return nil
 	})
 }

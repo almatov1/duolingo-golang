@@ -11,6 +11,7 @@ type Language string
 type Level string
 type StudyFormat string
 type LessonType string
+type UserState string
 
 const (
 	LangKK Language = "kk"
@@ -30,6 +31,9 @@ const (
 	Reading   LessonType = "READING"
 	Listening LessonType = "LISTENING"
 	Speaking  LessonType = "SPEAKING"
+
+	StateTest   UserState = "TEST"
+	StateFormat UserState = "FORMAT"
 )
 
 // --- COLLECTIONS ---
@@ -57,6 +61,7 @@ type User struct {
 	Format   *StudyFormat `bson:"format,omitempty" json:"format,omitempty"`
 
 	Progress []UserProgress `bson:"progress" json:"progress"`
+	State    UserState      `bson:"state" json:"state"`
 
 	CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
 }

@@ -11,4 +11,6 @@ func RegisterHandlers(b *telebot.Bot) {
 
 	handlers.RegisterStartHandler(b)
 	handlers.RegisterRegistrationHandler(b)
+	handlers.RegisterTestHandler(b)
+	handlers.RegisterFormatHandler(b)
 }
