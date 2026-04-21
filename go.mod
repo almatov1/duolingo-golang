@@ -3,6 +3,7 @@ module duolingo-golang
 go 1.25.0
 
 require (
+	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/joho/godotenv v1.5.1
 	go.mongodb.org/mongo-driver v1.17.9
 	gopkg.in/telebot.v4 v4.0.0-beta.7
