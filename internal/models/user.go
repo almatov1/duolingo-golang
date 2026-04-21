@@ -34,6 +34,7 @@ const (
 
 	StateTest   UserState = "TEST"
 	StateFormat UserState = "FORMAT"
+	StateStudy  UserState = "STUDY"
 )
 
 // --- COLLECTIONS ---

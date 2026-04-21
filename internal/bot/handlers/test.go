@@ -32,13 +32,13 @@ var (
 
 	TEST_QUESTIONS = []TestQuestion{
 		{
-			Question:     "What is 2+2?",
-			Answers:      []string{"3", "4", "5", "6"},
+			Question:     "Бірінші сұрақ? (мысал)",
+			Answers:      []string{"Жауап 1", "Жауап 2", "Жауап 3", "Жауап 4"},
 			CorrectIndex: 1,
 		},
 		{
-			Question:     "Capital of Kazakhstan?",
-			Answers:      []string{"Astana", "Almaty", "Shymkent", "Aqtobe"},
+			Question:     "Екінші сұрақ? (мысал)",
+			Answers:      []string{"Жауап 1", "Жауап 2", "Жауап 3", "Жауап 4"},
 			CorrectIndex: 0,
 		},
 	}

@@ -49,12 +49,19 @@ func handleFormatSelect(c telebot.Context) error {
 	_, _ = collection.UpdateOne(
 		context.TODO(),
 		bson.M{"telegramId": user.TelegramID},
-		bson.M{"$set": bson.M{"format": format}},
+		bson.M{"$set": bson.M{
+			"format": format,
+			"state":  models.StateStudy,
+		}},
 	)
 
 	if format == string(models.FormatOffline) {
-		return c.Send(i18n.T(string(user.Language), "format.location"))
+		return handleOfflineFormat(c, *user)
 	}
 
-	return c.Send("lessons")
+	return showLessons(c)
+}
+
+func handleOfflineFormat(c telebot.Context, user models.User) error {
+	return c.Send(i18n.T(string(user.Language), "format.location"))
 }
