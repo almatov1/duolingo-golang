@@ -32,7 +32,8 @@ const (
 	Speaking  LessonType = "SPEAKING"
 )
 
-// --- ПОД-СТРУКТУРА ПРОГРЕССА ---
+// --- COLLECTIONS ---
+
 type UserProgress struct {
 	TopicId    int        `bson:"topicId" json:"topicId"`
 	LessonType LessonType `bson:"lessonType" json:"lessonType"`
@@ -40,7 +41,6 @@ type UserProgress struct {
 	CreatedAt  time.Time  `bson:"createdAt" json:"createdAt"`
 }
 
-// --- ГЛАВНАЯ МОДЕЛЬ USER ---
 type User struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	TelegramID  int64              `bson:"telegramId" json:"telegramId"`
@@ -54,7 +54,6 @@ type User struct {
 	Level       *Level             `bson:"level,omitempty" json:"level,omitempty"`
 	Format      *StudyFormat       `bson:"format,omitempty" json:"format,omitempty"`
 
-	// Вложенный массив прогресса
 	Progress []UserProgress `bson:"progress" json:"progress"`
 
 	CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
