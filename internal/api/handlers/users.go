@@ -10,6 +10,7 @@ import (
 	"duolingo-golang/internal/database"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
@@ -43,16 +44,27 @@ func UsersHandler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(users)
 	case http.MethodDelete:
-		id := r.URL.Query().Get("id")
-		if id == "" {
+		idStr := r.URL.Query().Get("id")
+		if idStr == "" {
 			http.Error(w, "missing id", http.StatusBadRequest)
 			return
 		}
 
+		objID, err := primitive.ObjectIDFromHex(idStr)
+		if err != nil {
+			http.Error(w, "invalid id format", http.StatusBadRequest)
+			return
+		}
+
 		collection := database.Client.Database(configs.DBName).Collection(configs.UserCollectionName)
-		_, err := collection.DeleteOne(context.TODO(), bson.M{"id": id})
+		res, err := collection.DeleteOne(context.TODO(), bson.M{"_id": objID})
 		if err != nil {
 			http.Error(w, "db error", http.StatusInternalServerError)
+			return
+		}
+
+		if res.DeletedCount == 0 {
+			http.Error(w, "user not found", http.StatusNotFound)
 			return
 		}
 
