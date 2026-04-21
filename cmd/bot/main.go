@@ -18,10 +18,10 @@ func main() {
 	database.ConnectMongoDB()
 
 	// Telebot
-	tgBot, err := bot.InitBot()
+	b, err := bot.InitBot()
 	if err != nil {
 		log.Fatalf("Ошибка при запуске бота: %v", err)
 	}
-	bot.RegisterHandlers(tgBot)
-	tgBot.Start()
+	bot.RegisterHandlers(b)
+	b.Start()
 }

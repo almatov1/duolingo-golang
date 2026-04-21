@@ -42,17 +42,19 @@ type UserProgress struct {
 }
 
 type User struct {
-	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	TelegramID  int64              `bson:"telegramId" json:"telegramId"`
-	Name        string             `bson:"name" json:"name"`
-	Birthday    string             `bson:"birthday" json:"birthday"`
-	Nationality string             `bson:"nationality" json:"nationality"`
-	Workplace   string             `bson:"workplace" json:"workplace"`
-	Address     string             `bson:"address" json:"address"`
-	Telephone   string             `bson:"telephone" json:"telephone"`
-	Language    Language           `bson:"language" json:"language"`
-	Level       *Level             `bson:"level,omitempty" json:"level,omitempty"`
-	Format      *StudyFormat       `bson:"format,omitempty" json:"format,omitempty"`
+	ID         primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	TelegramID int64              `bson:"telegramId" json:"telegramId"`
+
+	Name        string `bson:"name" json:"name"`
+	Birthday    string `bson:"birthday" json:"birthday"`
+	Nationality string `bson:"nationality" json:"nationality"`
+	Workplace   string `bson:"workplace" json:"workplace"`
+	Address     string `bson:"address" json:"address"`
+	Telephone   string `bson:"telephone" json:"telephone"`
+
+	Language Language     `bson:"language" json:"language"`
+	Level    *Level       `bson:"level,omitempty" json:"level,omitempty"`
+	Format   *StudyFormat `bson:"format,omitempty" json:"format,omitempty"`
 
 	Progress []UserProgress `bson:"progress" json:"progress"`
 
